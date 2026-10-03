@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UrbanTee | Premium T-Shirts</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:#f5f5f5;
+  color:#111;
+}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#111;
+  color:white;
+  padding:15px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:23px;
+  font-weight:800;
+}
+
+.logo span{
+  color:#ff3d68;
+}
+
+nav{
+  display:flex;
+  gap:22px;
+}
+
+nav a{
+  color:#ddd;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.cart{
+  background:#ff3d68;
+  padding:9px 14px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+/* HERO */
+.hero{
+  min-height:450px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 20px;
+  background:
+    radial-gradient(circle at 20% 20%,#393939,#111 45%),
+    #111;
+  color:white;
+}
+
+.hero h1{
+  font-size:clamp(40px,8vw,70px);
+  margin-bottom:15px;
+}
+
+.hero h1 span{
+  color:#ff3d68;
+}
+
+.hero p{
+  color:#bbb;
+  font-size:17px;
+  margin-bottom:28px;
+}
+
+.hero-btn{
+  display:inline-block;
+  background:#ff3d68;
+  color:white;
+  padding:14px 28px;
+  border-radius:9px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* CONTAINER */
+.container{
+  width:92%;
+  max-width:1150px;
+  margin:auto;
+}
+
+/* TITLE */
+.title{
+  text-align:center;
+  padding:45px 0 25px;
+}
+
+.title h2{
+  font-size:30px;
+}
+
+.title p{
+  color:#777;
+  margin-top:8px;
+}
+
+/* FILTER */
+.filters{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
+
+.filter{
+  border:1px solid #ddd;
+  background:white;
+  padding:9px 16px;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+.filter.active,
+.filter:hover{
+  background:#111;
+  color:white;
+}
+
+/* PRODUCTS */
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  padding-bottom:60px;
+}
+
+.product{
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 5px 20px #00000010;
+  transition:.3s;
+  position:relative;
+}
+
+.product:hover{
+  transform:translateY(-5px);
+}
+
+.product-img{
+  position:relative;
+}
+
+.product img{
+  width:100%;
+  height:270px;
+  object-fit:cover;
+  display:block;
+}
+
+.badge{
+  position:absolute;
+  top:12px;
+  left:12px;
+  background:#ff3d68;
+  color:white;
+  padding:6px 9px;
+  border-radius:6px;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.sold{
+  background:#555;
+}
+
+.info{
+  padding:16px;
+}
+
+.info h3{
+  font-size:17px;
+  margin-bottom:6px;
+}
+
+.category{
+  font-size:12px;
+  color:#888;
+  margin-bottom:8px;
+}
+
+.price{
+  color:#e52e59;
+  font-size:21px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.old{
+  color:#999;
+  text-decoration:line-through;
+  font-size:12px;
+  margin-left:5px;
+}
+
+.sizes{
+  display:flex;
+  gap:5px;
+  margin:10px 0 14px;
+}
+
+.size{
+  border:1px solid #ddd;
+  padding:5px 8px;
+  border-radius:5px;
+  font-size:11px;
+}
+
+.buy{
+  width:100%;
+  padding:11px;
+  border:0;
+  border-radius:8px;
+  background:#111;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.buy:hover{
+  background:#ff3d68;
+}
+
+.buy.disabled{
+  background:#aaa;
+  cursor:not-allowed;
+}
+
+/* CONTACT */
+.contact{
+  background:#111;
+  color:white;
+  padding:65px 20px;
+  text-align:center;
+}
+
+.contact h2{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.contact p{
+  color:#aaa;
+  margin-bottom:25px;
+}
+
+.contact-buttons{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.contact-btn{
+  padding:13px 22px;
+  border-radius:8px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+}
+
+.whatsapp{
+  background:#20b858;
+}
+
+.telegram{
+  background:#229ed9;
+}
+
+/* FOOTER */
+footer{
+  background:#080808;
+  color:#777;
+  text-align:center;
+  padding:25px;
+  font-size:13px;
+}
+
+footer strong{
+  color:#ddd;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .products{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:650px){
+  nav{
+    display:none;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .product img{
+    height:220px;
+  }
+
+  .info{
+    padding:12px;
+  }
+
+  .info h3{
+    font-size:15px;
+  }
+
+  .price{
+    font-size:18px;
+  }
+}
+
+@media(max-width:420px){
+  .products{
+    grid-template-columns:1fr;
+  }
+
+  .product img{
+    height:340px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+  <div class="logo">
+    Urban<span>Tee</span>
+  </div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="cart">
+    🛒 Cart <span id="cartCount">0</span>
+  </div>
+
+</header>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+  <div>
+
+    <h1>
+      Premium <span>T-Shirts</span>
+    </h1>
+
+    <p>
+      Oversized • Drop Shoulder • Premium Cotton
+    </p>
+
+    <a href="#shop" class="hero-btn">
+      Shop Collection
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- SHOP -->
+<section id="shop">
+
+<div class="container">
+
+  <div class="title">
+
+    <h2>🔥 Latest Collection</h2>
+
+    <p>
+      Choose your favourite T-Shirt
+    </p>
+
+  </div>
+
+
+  <!-- FILTER -->
+  <div class="filters">
+
+    <button class="filter active" onclick="filterProducts('all',this)">
+      All
+    </button>
+
+    <button class="filter" onclick="filterProducts('drop',this)">
+      Drop Shoulder
+    </button>
+
+    <button class="filter" onclick="filterProducts('oversized',this)">
+      Oversized
+    </button>
+
+    <button class="filter" onclick="filterProducts('premium',this)">
+      Premium
+    </button>
+
+  </div>
+
+
+  <div class="products">
+
+
+    <!-- 1 -->
+    <div class="product" data-category="drop">
+
+      <div class="product-img">
+        <span class="badge">NEW</span>
+
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80">
+
+      </div>
+
+      <div class="info">
+
+        <h3>White Drop Shoulder</h3>
+
+        <div class="category">
+          Drop Shoulder
+        </div>
+
+        <div class="price">
+          ৳699 <span class="old">৳899</span>
+        </div>
+
+        <div class="sizes">
+          <span class="size">M</span>
+          <span class="size">L</span>
+          <span class="size">XL</span>
+          <span class="size">XXL</span>
+        </div>
+
+        <button class="buy" onclick="addCart('White Drop Shoulder')">
+          🛒 Add to Cart
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- 2 -->
+    <div class="product" data-category="drop">
+
+      <div class="product-img">
+        <span class="badge">HOT</span>
+
+        <img src="https://images.unsplash.com/photo-1583743814966-8936f37f3846?auto=format&fit=crop&w=700&q=80">
+
+      </div>
+
+      <div class="info">
+
+        <h3>Black Drop Shoulder</h3>
+
+        <div class="category">Drop Shoulder</div>
+
+        <div class="price">
+          ৳749 <span class="old">৳950</span>
+        </div>
+
+        <div class="sizes">
+          <span class="size">M</span>
+          <span class="size">L</span>
+          <span class="size">XL</span>
+          <span class="size">XXL</span>
+        </div>
+
+        <button class="buy" onclick="addCart('Black Drop Shoulder')">
+          🛒 Add to Cart
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- 3 -->
+    <div class="product" data-category="oversized">
+
+      <div class="product-img">
+
+        <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=700&q=80">
+
+      </div>
+
+      <div class="info">
+
+        <h3>Classic Oversized</h3>
+
+        <div class="category">Oversized</div>
+
+        <div class="price">
+          ৳649
+        </div>
+
+        <div class="sizes">
+          <span class="size">M</span>
+          <span class="size">L</span>
+          <span class="size">XL</span>
+        </div>
+
+        <button class="buy" onclick="addCart('Classic Oversized')">
+          🛒 Add to Cart
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- 4 -->
+    <div class="product" data-category="premium">
+
+      <div class="product-img">
+        <span class="badge">PREMIUM</span>
+
+        <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=700&q=80">
+
+      </div>
+
+      <div class="info">
+
+        <h3>Premium Street Tee</h3>
+
+        <div class="category">Premium</div>
+
+        <div class="price">
+          ৳899 <span class="old">৳1,099</span>
+        </div>
+
+        <div class="sizes">
+          <span class="size">M</span>
+          <span class="size">L</span>
+          <span class="size">XL</span>
+        </div>
+
+        <button class="buy" onclick="addCart('Premium Street Tee')">
+          🛒 Add to Cart
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- 5 -->
+    <div class="product" data-category="drop">
+
+      <div class="product-img">
+
+        <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=80">
+
+      </div>
+
+      <div class="info">
+
+        <h3>Grey Drop Shoulder</h3>
+
+        <div class="category">Drop Shoulder</div>
+
+        <div class="price">
+          ৳699
+        </div>
+
+        <div class="sizes">
+          <span class="size">M</span>
+          <span class="size">L</span>
+          <span class="size">XL</span>
+        </div>
+
+        <button class="buy" onclick="addCart('Grey Drop Shoulder')">
+          🛒 Add to Cart
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- 6 -->
+    <div class="product" data-category="oversized">
+
+      <div class="product-img">
+        <span class="badge">NEW</span>
+
+        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=700&q=80">
+
+      </div>
+
+      <div class="info">
+
+        <h3>Urban Oversized Tee</h3>
+
+        <div class="category">Oversized</div>
+
+        <div class="price">
+          ৳799
+        </div>
+
+        <div class="sizes">
+          <span class="size">M</span>
+          <span class="size">L</span>
+          <span class="size">XL</span>
+          <span class="size">XXL</span>
+        </div>
+
+        <button class="buy" onclick="addCart('Urban Oversized Tee')">
+          🛒 Add to Cart
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- 7 -->
+    <div class="product" data-category="premium">
+
+      <div class="product-img">
+
+        <img src="https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=700&q=80">
+
+      </div>
+
+      <div class="info">
+
+        <h3>Premium Cotton Tee</h3>
+
+        <div class="category">Premium</div>
+
+        <div class="price">
+          ৳849
+        </div>
+
+        <div class="sizes">
+          <span class="size">S</span>
+          <span class="size">M</span>
+          <span class="size">L</span>
+        </div>
+
+        <button class="buy" onclick="addCart('Premium Cotton Tee')">
+          🛒 Add to Cart
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- 8 -->
+    <div class="product" data-category="drop">
+
+      <div class="product-img">
+
+        <img src="https://images.unsplash.com/photo-1627225924765-552d49cf47ad?auto=format&fit=crop&w=700&q=80">
+
+      </div>
+
+      <div class="info">
+
+        <h3>Street Drop Tee</h3>
+
+        <div class="category">Drop Shoulder</div>
+
+        <div class="price">
+          ৳749
+        </div>
+
+        <div class="sizes">
+          <span class="size">M</span>
+          <span class="size">L</span>
+          <span class="size">XL</span>
+        </div>
+
+        <button class="buy" onclick="addCart('Street Drop Tee')">
+          🛒 Add to Cart
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- 9 -->
+    <div class="product" data-category="oversized">
+
+      <div class="product-img">
+        <span class="badge">SALE</span>
+
+        <img src="https://images.unsplash.com/photo-1622445275576-721325763afe?auto=format&fit=crop&w=700&q=80">
+
+      </div>
+
+      <div class="info">
+
+        <h3>Black Oversized</h3>
+
+        <div class="category">Oversized</div>
+
+        <div class="price">
+          ৳599 <span class="old">৳799</span>
+        </div>
+
+        <div class="sizes">
+          <span class="size">M</span>
+          <span class="size">L</span>
+          <span class="size">XL</span>
+        </div>
+
+        <button class="buy" onclick="addCart('Black Oversized')">
+          🛒 Add to Cart
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- 10 -->
+    <div class="product" data-category="premium">
+
+      <div class="product-img">
+
+        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=700&q=80">
+
+      </div>
+
+      <div class="info">
+
+        <h3>Minimal Premium Tee</h3>
+
+        <div class="category">Premium</div>
+
+        <div class="price">
+          ৳899
+        </div>
+
+        <div class="sizes">
+          <span class="size">M</span>
+          <span class="size">L</span>
+          <span class="size">XL</span>
+        </div>
+
+        <button class="buy" onclick="addCart('Minimal Premium Tee')">
+          🛒 Add to Cart
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- 11 -->
+    <div class="product" data-category="drop">
+
+      <div class="product-img">
+        <span class="badge sold">SOLD OUT</span>
+
+        <img src="https://images.unsplash.com/photo-1551489186-cf8726f514f8?auto=format&fit=crop&w=700&q=80">
+
+      </div>
+
+      <div class="info">
+
+        <h3>Limited Drop Tee</h3>
+
+        <div class="category">Drop Shoulder</div>
+
+        <div class="price">
+          ৳799
+        </div>
+
+        <div class="sizes">
+          <span class="size">M</span>
+          <span class="size">L</span>
+        </div>
+
+        <button class="buy disabled" disabled>
+          SOLD OUT
+        </button>
+
+      </div>
+    </div>
+
+
+    <!-- 12 -->
+    <div class="product" data-category="premium">
+
+      <div class="product-img">
+        <span class="badge">NEW</span>
+
+        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=700&q=80">
+
+      </div>
+
+      <div class="info">
+
+        <h3>Signature Tee</h3>
+
+        <div class="category">Premium</div>
+
+        <div class="price">
+          ৳999
+        </div>
+
+        <div class="sizes">
+          <span class="size">M</span>
+          <span class="size">L</span>
+          <span class="size">XL</span>
+          <span class="size">XXL</span>
+        </div>
+
+        <button class="buy" onclick="addCart('Signature Tee')">
+          🛒 Add to Cart
+        </button>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+  <h2>📦 Order Your T-Shirt</h2>
+
+  <p>
+    Order করতে WhatsApp অথবা Telegram-এ message করুন।
+  </p>
+
+  <div class="contact-buttons">
+
+    <!-- নিজের WhatsApp number বসাবে -->
+    <a
+      href="https://wa.me/8801XXXXXXXXX"
+      class="contact-btn whatsapp"
+      target="_blank">
+      💬 WhatsApp
+    </a>
+
+    <!-- নিজের Telegram username বসাবে -->
+    <a
+      href="https://t.me/YOUR_USERNAME"
+      class="contact-btn telegram"
+      target="_blank">
+      ✈️ Telegram
+    </a>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  © 2026 <strong>UrbanTee</strong> • Premium T-Shirts
+
+</footer>
+
+
+<script>
+
+let cart = 0;
+
+function addCart(product){
+
+  cart++;
+
+  document.getElementById("cartCount").innerText = cart;
+
+  alert(
+    product +
+    " added to cart! 🛒"
+  );
+
+}
+
+
+function filterProducts(category,button){
+
+  document
+    .querySelectorAll(".filter")
+    .forEach(btn => btn.classList.remove("active"));
+
+  button.classList.add("active");
+
+  document
+    .querySelectorAll(".product")
+    .forEach(product => {
+
+      if(
+        category === "all" ||
+        product.dataset.category === category
+      ){
+
+        product.style.display = "";
+
+      }else{
+
+        product.style.display = "none";
+
+      }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
